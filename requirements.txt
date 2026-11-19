@@ -1,3 +1,1 @@
-streamlit
 google-gena1
-pydantic
