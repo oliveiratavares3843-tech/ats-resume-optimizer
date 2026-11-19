@@ -24,7 +24,7 @@ with st.sidebar:
     st.header("Configuração")
     api_key = st.text_input("Gemini API Key", type="password", value=os.getenv("GEMINI_API_KEY", ""))
     st.caption("Obtenha sua chave gratuitamente no Google AI Studio.")
-    modelo = st.selectbox("Modelo", ["gemini-3.8-flash", "gemini-3.8-pro"], index=0)
+    modelo = st.selectbox("Modelo", ["gemini-3.5-flash", "gemini-3.5-pro"], index=0)
 
 # Colunas principais: Entrada de dados
 col1, col2 = st.columns(2)
