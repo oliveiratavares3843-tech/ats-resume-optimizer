@@ -279,14 +279,8 @@ if st.button(
             "⚠️ Requisitos Eliminatórios",
             "💡 Dicas para Etapas",
         ])
-
+                                        
         with tab1:
-          st.markdown("**Campo: Apresente-se / Resumo Profissional**")
-          st.code(resultado.resumo_profissional, language="text")
-          st.markdown("**Campo: Experiências Otimizadas**")
-          st.code(resultado.experiencias_otimizadas, language="text")
-
-         with tab1:
           st.markdown("**Campo: Apresente-se / Resumo Profissional**")
           st.code(resultado.resumo_profissional, language="text")
           st.markdown("**Campo: Experiências Otimizadas**")
