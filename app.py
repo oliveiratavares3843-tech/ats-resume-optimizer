@@ -281,7 +281,7 @@ if st.button(
           st.code(resultado.resumo_profissional, language="text")
 
         excepet Exception as e:
-           st.error(F"Erro ap processar: {e}")
+           st.error(f"Erro ao processar: {e}")
   
 
     
