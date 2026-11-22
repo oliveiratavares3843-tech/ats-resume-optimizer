@@ -159,14 +159,18 @@ with st.sidebar:
   st.divider()
   st.header("Configuração")
   # Puxa automaticamente dos Secrets do Streamlit Cloud (cliente não precisa digitar)
-  api_key_secret = st.secrets.get("GEMINI_API_KEY", os.getenv("GEMINI_API_KEY", ""))
+  api_key_secret = st.secrets.get(
+      "GEMINI_API_KEY", os.getenv("GEMINI_API_KEY", "")
+  )
   if api_key_secret:
     api_key = api_key_secret
     st.success("Motor de IA conectado")
   else:
     api_key = st.text_input("Gemini API Key", type="password")
 
-  modelo = st.selectbox("Modelo", ["gemini-2.5-flash", "gemini-2.5-pro"], index=0)
+  modelo = st.selectbox(
+      "Modelo", ["gemini-2.5-flash", "gemini-2.5-pro"], index=0
+  )
 
 # Paywall: Bloqueia se acabaram os 3 testes gratuitos
 if (
@@ -180,10 +184,10 @@ if (
       " conquistar sua entrevista."
   )
   st.info("💰 **Valor Promocional de Lançamento:** R$ 29,90 (Pix único)")
-  st.code("COLOQUE_SUA_CHAVE_PIX_AQUI", language="text")
+  st.code("88841600144", language="text")
   st.markdown(
       "[📲 Enviar comprovante no WhatsApp para liberação"
-      " imediata](https://wa.me)"
+      " imediata](5561991263988)"
   )
   st.stop()
 
@@ -230,20 +234,20 @@ if st.button(
         client = genai.Client(api_key=api_key)
 
         prompt = f"""
-                Você é um especialista em recrutamento e algoritmos de triagem semântica (ATS/Gupy).
-                Analise o CURRÍCULO BASE do candidato em relação à DESCRIÇÃO DA VAGA.
+        Você é um especialista em recrutamento e algoritmos de triagem semântica (ATS/Gupy).
+        Analise o CURRÍCULO BASE do candidato em relação à DESCRIÇÃO DA VAGA.
 
-                REGRAS ESTRITAS:
-                1. NUNCA invente experiências, cargos, diplomas ou ferramentas que não estejam no currículo base.
-                2. Adapte apenas o vocabulário e a ênfase para refletir os termos exatos da vaga onde houver correspondência real.
-                3. Mantenha tom profissional, direto e humano (evite clichês genéricos de IA como 'apaixonado por desafios' ou 'profissional dinâmico').
+        REGRAS ESTRITAS:
+        1. NUNCA invente experiências, cargos, diplomas ou ferramentas que não estejam no currículo base.
+        2. Adapte apenas o vocabulário e a ênfase para refletir os termos exatos da vaga onde houver correspondência real.
+        3. Mantenha tom profissional, direto e humano (evite clichês genéricos de IA como 'apaixonado por desafios' ou 'profissional dinâmico').
 
-                CURRÍCULO BASE:
-                {curriculo_base}
+        CURRÍCULO BASE:
+        {curriculo_base}
 
-                DESCRIÇÃO DA VAGA:
-                {descricao_vaga}
-                """
+        DESCRIÇÃO DA VAGA:
+        {descricao_vaga}
+        """
 
         response = client.models.generate_content(
             model=modelo,
@@ -279,12 +283,9 @@ if st.button(
         with tab1:
           st.markdown("**Campo: Apresente-se / Resumo Profissional**")
           st.code(resultado.resumo_profissional, language="text")
+          st.markdown("**Campo: Experiências Otimizadas**")
+          st.code(resultado.experiencias_otimizadas, language="text")
 
-        except Exception as e:
-           st.error(f"Erro ao processar: {e}")
-  
-
-    
-
-          
+        with tab2:
+          st.markdown("**Palavras-chave para marcar na Gupy:**")
 
