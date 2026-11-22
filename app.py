@@ -280,7 +280,7 @@ if st.button(
           st.markdown("**Campo: Apresente-se / Resumo Profissional**")
           st.code(resultado.resumo_profissional, language="text")
 
-        excpet Exception as e:
+        excepet Exception as e:
            st.error(F"Erro ap processar: {e}")
   
 
