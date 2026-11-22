@@ -286,20 +286,28 @@ if st.button(
           st.markdown("**Campo: Experiências Otimizadas**")
           st.code(resultado.experiencias_otimizadas, language="text")
 
-        import hashlib
-import os
-import gspread
-from google import genai
-from google.genai import types
-from pydantic import BaseModel, Field
-import streamlit as st
+with tab1:
+          st.markdown("**Campo: Apresente-se / Resumo Profissional**")
+          st.code(resultado.resumo_profissional, language="text")
+          st.markdown("**Campo: Experiências Otimizadas**")
+          st.code(resultado.experiencias_otimizadas, language="text")
 
-# 1. Configuração única da página
-st.set_page_config(page_title="Copiloto Gupy", page_icon="🎯", layout="wide")
+        with tab2:
+          st.markdown("**Palavras-chave para marcar na Gupy:**")
+          st.write(", ".join(resultado.palavras_chave))
+
+        with tab3:
+          for req in resultado.requisitos_eliminatorios:
+            st.write(f"- {req}")
+
+        with tab4:
+          for dica in resultado.dicas_triagem:
+            st.write(f"- {dica}")
+
+      except Exception as e:
+        st.error(f"Erro ao processar: {e}")
 
 
-# --- FUNÇÕES DE SEGURANÇA E BANCO (GOOGLE SHEETS) ---
-def gerar_hash(senha: str) -> str:
   return hashlib.sha256(senha.encode()).hexdigest()
 
 
