@@ -286,6 +286,20 @@ if st.button(
           st.markdown("**Campo: Experiências Otimizadas**")
           st.code(resultado.experiencias_otimizadas, language="text")
 
-        with tab2:
-          st.markdown("**Palavras-chave para marcar na Gupy:**")
+        import hashlib
+import os
+import gspread
+from google import genai
+from google.genai import types
+from pydantic import BaseModel, Field
+import streamlit as st
+
+# 1. Configuração única da página
+st.set_page_config(page_title="Copiloto Gupy", page_icon="🎯", layout="wide")
+
+
+# --- FUNÇÕES DE SEGURANÇA E BANCO (GOOGLE SHEETS) ---
+def gerar_hash(senha: str) -> str:
+  return hashlib.sha256(senha.encode()).hexdigest()
+
 
