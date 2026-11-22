@@ -286,7 +286,7 @@ if st.button(
           st.markdown("**Campo: Experiências Otimizadas**")
           st.code(resultado.experiencias_otimizadas, language="text")
 
-with tab1:
+         with tab1:
           st.markdown("**Campo: Apresente-se / Resumo Profissional**")
           st.code(resultado.resumo_profissional, language="text")
           st.markdown("**Campo: Experiências Otimizadas**")
@@ -308,6 +308,5 @@ with tab1:
         st.error(f"Erro ao processar: {e}")
 
 
-  return hashlib.sha256(senha.encode()).hexdigest()
 
 
